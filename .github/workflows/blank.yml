@@ -32,6 +32,7 @@ jobs:
       - name: Run gcc
         run: |
           mkdir -p output/release
+          mkdir -p output/release/abc
           gcc test.c -o test
           cp test output/release/ 
           echo `date` > output/release/time.log
@@ -46,3 +47,11 @@ jobs:
         with:
           name: test-artifact
           path: output/release/
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: test-artifact
+
+      - name : Dispaly output files...
+        run: ls -R
+        working-directory: output/release/
