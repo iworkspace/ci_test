@@ -31,10 +31,10 @@ jobs:
 
       - name: Run gcc
         run: |
-          mkdir /workspace
+          mkdir -p output/release
           gcc test.c -o test
-          cp test /workspace/test
-
+          cp test output/release/ 
+          echo `date` > output/release/time.log
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -45,4 +45,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: test-artifact
-          path: /workspace/test
+          path: output/release/
