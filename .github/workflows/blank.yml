@@ -35,6 +35,7 @@ jobs:
           mkdir -p output/release/abc
           gcc test.c -o test
           cp test output/release/ 
+          bash test.sh > output/release/a.log
           echo `date` > output/release/time.log
 
       # Runs a set of commands using the runners shell
